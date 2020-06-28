@@ -12,6 +12,13 @@ class AppointmentsRepository {
   }
 
   /**
+   * Returns an array with all the appointments.
+   */
+  public all(): Appointment[] {
+    return this.appointments;
+  }
+
+  /**
    * Finds an Appointment by the date passed as a parameter.
    * If found, returns the Appointment, otherwise null.
    * @param date key for search
