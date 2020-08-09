@@ -8,7 +8,7 @@ import routes from './shared/routes';
 import uploadConfig from './config/upload';
 import AppError from './shared/errors/AppError';
 
-import './shared/database/index';
+import './shared/infra/database';
 
 const app = express();
 app.use(cors());
