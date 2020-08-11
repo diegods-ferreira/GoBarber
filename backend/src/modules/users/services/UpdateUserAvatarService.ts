@@ -18,7 +18,7 @@ class UpdateUserAvatarService {
   ) {}
 
   public async execute({ user_id, avatar_filename }: IRequest): Promise<User> {
-    const user = await this.usersRepository.findByEmail(user_id);
+    const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('Only authenticated users can change avatar', 401);
