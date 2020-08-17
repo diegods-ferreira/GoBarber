@@ -28,11 +28,21 @@ describe('UpdateProfile', () => {
     const updatedUser = await updateProfile.execute({
       user_id: user.id,
       name: 'John Doe',
-      email: 'johnddoe@example.com',
+      email: 'johndoe@example.com',
     });
 
     expect(updatedUser.name).toBe('John Doe');
-    expect(updatedUser.email).toBe('johnddoe@example.com');
+    expect(updatedUser.email).toBe('johndoe@example.com');
+  });
+
+  it('should not be able to update the profile of non-existing user', async () => {
+    await expect(
+      updateProfile.execute({
+        user_id: 'non-existing-user-id',
+        name: 'John Doe',
+        email: 'johndoe@example.com',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to change to another user email', async () => {
@@ -67,7 +77,7 @@ describe('UpdateProfile', () => {
     const updatedUser = await updateProfile.execute({
       user_id: user.id,
       name: 'John Doe',
-      email: 'johnddoe@example.com',
+      email: 'johndoe@example.com',
       old_password: '123456',
       password: '123123',
     });
@@ -86,7 +96,7 @@ describe('UpdateProfile', () => {
       updateProfile.execute({
         user_id: user.id,
         name: 'John Doe',
-        email: 'johnddoe@example.com',
+        email: 'johndoe@example.com',
         password: '123123',
       }),
     ).rejects.toBeInstanceOf(AppError);
@@ -103,7 +113,7 @@ describe('UpdateProfile', () => {
       updateProfile.execute({
         user_id: user.id,
         name: 'John Doe',
-        email: 'johnddoe@example.com',
+        email: 'johndoe@example.com',
         old_password: 'wrong-old-password',
         password: '123123',
       }),
