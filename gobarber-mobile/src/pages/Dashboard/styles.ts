@@ -61,7 +61,6 @@ export const ProviderAvatar = styled.Image`
   width: 72px;
   height: 72px;
   border-radius: 36px;
-  background: #312e38;
 `;
 
 export const ProviderInfo = styled.View`
